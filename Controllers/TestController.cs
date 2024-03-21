@@ -29,5 +29,18 @@ namespace TestApi.Controllers
             _cacheService.Enqueue(key, value);
             return Ok();
         }
+
+        [HttpPost]
+        [Route("create")]
+        public void Create([FromBody] List<Pair> pairs)
+        {
+            pairs.ForEach(pair => _cacheService.Enqueue(pair.Key, pair.Value));
+        }
     }
+}
+
+public class Pair
+{
+    public string Key { get; set; }
+    public string Value { get; set; }
 }
