@@ -55,7 +55,7 @@ public class FTSService
         List<string> advancedSplit = new List<string>();
         foreach (string initialToken in tokenizedTextSplit)
         {
-            string alphaNumericPattern = @"(?<=\d)(?=\w)";
+            string alphaNumericPattern = @"(?<=\d)(?=\d)|(?<=\d)(?=\w)|(?<=\w)(?=\d)|(?<=\w)(?=\W)";
             advancedSplit.AddRange(Regex.Split(initialToken, alphaNumericPattern));
         }
         return advancedSplit.ToArray();
